@@ -10,7 +10,7 @@ int statIndex;
 
 int main (int argc, char *argv[]) {
 	if (argc == 1) {
-		fprintf(stderr, "%s", "Brainfuck file is required");
+		fprintf(stderr,"Usage: bftoc <source file>\n");
 		return 1;
 	}
 	int i;
