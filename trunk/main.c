@@ -67,5 +67,8 @@ int main (int argc, char *argv[]) {
 	printPost();
 
 	printStatements(statements);
+	for (i = 0; i < MAX; ++i) {
+		free(statements[i]);
+	}
 	return 0;
 }

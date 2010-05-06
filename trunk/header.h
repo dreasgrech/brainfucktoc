@@ -6,7 +6,7 @@ extern char *allowed;
 
 extern char *statements[MAX];
 
-void printStatements(char **statements);
+void printStatements(char * const *statements);
 void printIndents(); 
 void printLine(char *line);
 void printWithoutIndents(char *line); 

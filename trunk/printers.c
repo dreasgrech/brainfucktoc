@@ -7,7 +7,7 @@ int statIndex = 0, indentLevel = 0;
 
 char *statements[MAX], *indent = "    ";
 
-void printStatements(char **stats) {
+void printStatements(char * const *stats) {
 	int i;
 	for (i = 0; i < statIndex; ++i) {
 		printf("%s\n", stats[i]);
