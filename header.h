@@ -16,5 +16,6 @@ void printPre();
 void printPost();
 void printSingleStatement (char c);
 
-int isAllowed (char c);
-int numberOfNextSame(char *line, char c);
+int contains (char c, char *source);
+int numberOfNextSame(char *line, char c, int *totalNumber);
+char *strconcat(char *dest, char *source);
