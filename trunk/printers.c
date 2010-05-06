@@ -46,13 +46,13 @@ void printPre() {
 	printLine("#include <stdlib.h>\n");
 	printLine("int main () {");
 	indentLevel++;
-	printLine("char *ptr = calloc(10000, sizeof *ptr);");
+	printLine("char *ptr = calloc(10000, sizeof *ptr), *start = ptr;");
 	printLine("int i = 0;\n");
 }
 
 void printPost() {
 	printLine("");
-	printLine("free(ptr);");
+	printLine("free(start);");
 	printLine("return 0;");
 	indentLevel--;
 	printLine("}");
