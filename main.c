@@ -67,50 +67,6 @@ int main (int argc, char *argv[]) {
 			printLine("}\n");
 		}
 	}
-	/*while (fgets(line, MAX, bfl)) {
-		for (; *line; line++) {
-			int isallowed = contains(*line, allowed);
-			if (!isallowed) {
-				continue;
-			}
-			int numsame = numberOfNextSame(line + 1, *line);
-			if (*line != '[' && *line != ']') {
-				if (*line == '+' || *line == '-' || *line == '>' || *line == '<') {
-					print("");
-					if (!numsame) {
-						if (*line == '+' || *line == '>') {
-							printWithoutIndents("++");
-						} else {
-							printWithoutIndents("--");
-						}
-					}
-					if (*line == '+' || *line == '-') {
-						printWithoutIndents("*");
-					}
-					printWithoutIndents("ptr");
-					if (numsame) {
-						if (*line == '+' || *line == '>') {
-							printWithoutIndents(" += ");
-						} else {
-							printWithoutIndents(" -= ");
-						}
-						printNumberWithoutIndents(numsame + 1);
-						line += numsame + 1;
-					}
-					printWithoutIndents(";\n");
-				} else {
-					printSingleStatement(*line);
-				}
-			} else if (*line == '[') {
-				printLine("while (*ptr) {");
-				indentLevel++;
-			} else if (*line == ']') {
-				indentLevel--;
-				printLine("}\n");
-			}
-
-		}	
-	}*/
 	fclose(bfl);
 	printPost();
 
