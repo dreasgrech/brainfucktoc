@@ -37,7 +37,7 @@ void print(char *line) {
 
 void printNumberWithoutIndents(int n) {
 	char numbuf[5];
-	itoa(n, numbuf, 10);
+	sprintf(numbuf, "%d", n);
 	strncat(statements[statIndex], numbuf, strlen(numbuf));
 }
 
