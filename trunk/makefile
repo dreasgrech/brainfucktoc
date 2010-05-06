@@ -1,6 +1,6 @@
 OBJECTS = helpers.o printers.o main.o
-dreas: $(OBJECTS)
-	gcc -w $(OBJECTS) -o dreas
+bftoc: $(OBJECTS)
+	gcc -w $(OBJECTS) -o bftoc
 printers.o: printers.c header.h
 	gcc -c printers.c -Wall
 helpers.o: helpers.c header.h
