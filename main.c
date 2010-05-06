@@ -72,7 +72,14 @@ int main (int argc, char *argv[]) {
 
 	printStatements(statements);
 	for (i = 0; i < MAX; ++i) {
-		free(statements[i]);
+		if (statements[i])
+			free(statements[i]);
 	}
+
+	if (copyFileInput)
+		free(copyFileInput);
+
+	if (line)
+		free(line);
 	return 0;
 }
