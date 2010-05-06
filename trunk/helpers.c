@@ -2,17 +2,6 @@
 #include <stdio.h>
 #include "header.h"
 
-
-/*int isAllowed (char c) {
-	int i, allowedChars = strlen(allowed);
-	for (i = 0; i < allowedChars; ++i) {
-		if (c == allowed[i]) {
-			return 1;
-		}
-	}
-	return 0;
-}*/
-
 int contains(char c, char *source) {
 	int i, sourceLength = strlen(source);
 	for (i = 0; i < sourceLength; ++i) {
@@ -42,6 +31,7 @@ int numberOfNextSame(char *line, char c, int *totalNumber) {
 	}
 	return t;
 }
+
 char * strconcat(char *dest, char *src) {
 	while (*dest) dest++;
 	while ((*dest++ = *src++));
