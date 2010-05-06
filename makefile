@@ -7,3 +7,5 @@ helpers.o: helpers.c header.h
 	gcc -c helpers.c -Wall
 main.o: main.c header.h
 	gcc -c main.c -Wall
+clean: 
+	rm $(OBJECTS)
