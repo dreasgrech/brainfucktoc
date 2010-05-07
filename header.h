@@ -12,9 +12,11 @@ void printLine(char *line);
 void printWithoutIndents(char *line); 
 void print(char *line);
 void printNumberWithoutIndents(int n);
+void printExitFunc();
 void printPre();
 void printPost();
 void printSingleStatement (char c);
+void printCheckBounds();
 
 int contains (char c, char *source);
 int numberOfNextSame(char *line, char c, int *totalNumber);
