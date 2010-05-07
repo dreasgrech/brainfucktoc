@@ -1,17 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 #include "header.h"
 
 char *allowed = "><+-.,[]", *statements[MAX], *fileInput;
 int statIndex;
 
+void usage()
+{
+	fprintf(stderr, "Usage: bftoc [-o output-file] <source file>\n");
+	fprintf(stderr, " -o output-file\t\t Place the output in output-file\n");
+	exit(1);
+}
+
 int main (int argc, char *argv[]) {
+	int f_id = -1;
+
 	if (argc == 1) {
-		fprintf(stderr,"Usage: bftoc <source file>\n");
-		return 1;
+		usage();
 	}
+	int c;
+	while ((c = getopt (argc, argv, "o:")) != -1)
+		if (c == 'o'){
+			char *fname = optarg;
+			f_id = open (fname, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IRGRP | S_IWUSR | S_IWGRP); 	
+			dup2(f_id, STDOUT_FILENO);
+			close(f_id);
+		} else {
+			usage();
+		}
+	if (optind < argc)
+		argv += optind - 1;
+	else 
+		usage();
 	int i;
 	fileInput = calloc(MAX, sizeof *fileInput);
 	for (i = 0; i < MAX; ++i) {
