@@ -41,18 +41,38 @@ void printNumberWithoutIndents(int n) {
 	strncat(statements[statIndex], numbuf, strlen(numbuf));
 }
 
+void printExitFunc() {
+	printLine("void exitWithStatus(int stat) {");
+	indentLevel++;
+	printLine("if (start) {");
+	indentLevel++;
+	printLine("free(start);");
+	indentLevel--;
+	printLine("}\n");
+	printLine("if (stat == 1)");
+	indentLevel++;
+	printLine("fprintf(stderr,\"\\nError: Out of bounds\\n\");");
+	indentLevel--;
+	printLine("exit(stat);");
+	indentLevel--;
+	printLine("}\n");
+}
+
 void printPre() {
 	printLine("#include <stdio.h>");
 	printLine("#include <stdlib.h>\n");
+	printLine("char *ptr, *start;\n");
+	printExitFunc();
 	printLine("int main () {");
 	indentLevel++;
-	printLine("char *ptr = calloc(10000, sizeof *ptr), *start = ptr;");
+	printLine("ptr = calloc(10000, sizeof *ptr);");
+	printLine("start = ptr;");
 	printLine("int i = 0;\n");
 }
 
 void printPost() {
 	printLine("");
-	printLine("free(start);");
+	printLine("exitWithStatus(0);");
 	printLine("return 0;");
 	indentLevel--;
 	printLine("}");
@@ -64,4 +84,12 @@ void printSingleStatement (char c) {
 	} else if (c == ',') {
 		printLine("*ptr = getch();");
 	}
+}
+
+void printCheckBounds() {
+	printLine("if ((ptr - start) < 0)");
+	indentLevel++;
+	printLine("exitWithStatus(1);");
+	indentLevel--;
+	printLine("");
 }

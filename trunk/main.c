@@ -34,12 +34,15 @@ int main (int argc, char *argv[]) {
 		int numsame = numberOfNextSame(fileInput, ch, &totalNumber);
 		if (ch != '[' && ch != ']') {
 			if (ch == '+' || ch == '-' || ch == '>' || ch == '<') {
+				int setCheckOnBounds = 0;
 				print("");
 				if (!numsame) {
 					if (ch == '+' || ch == '>') {
 						printWithoutIndents("++");
 					} else {
 						printWithoutIndents("--");
+						if (ch == '<')
+							setCheckOnBounds = 1;
 					}
 				}
 				if (ch == '+' || ch == '-') {
@@ -51,11 +54,15 @@ int main (int argc, char *argv[]) {
 						printWithoutIndents(" += ");
 					} else {
 						printWithoutIndents(" -= ");
+						if (ch == '<')
+							setCheckOnBounds = 1;
 					}
 					printNumberWithoutIndents(numsame + 1);
 					fileInput += totalNumber - 1;
 				}
 				printWithoutIndents(";\n");
+				if (setCheckOnBounds)
+					printCheckBounds();
 			} else {
 				printSingleStatement(ch);
 			}
