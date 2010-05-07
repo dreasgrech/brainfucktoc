@@ -3,7 +3,15 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 
+#ifndef S_IRGRP
+ #define S_IRGRP 0
+ #endif
+
+ #ifndef S_IWGRP
+ #define S_IWGRP 0
+ #endif
 #include "header.h"
 
 char *allowed = "><+-.,[]", *statements[MAX], *fileInput;
