@@ -4,7 +4,6 @@
 #include "header.h"
 
 int statIndex = 0, indentLevel = 0;
-
 char *statements[MAX], *indent = "    ";
 
 void printStatements(char * const *stats) {
