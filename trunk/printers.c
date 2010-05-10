@@ -81,7 +81,7 @@ void printSingleStatement (char c) {
 	if (c == '.') {
 		printLine("putchar(*ptr);");
 	} else if (c == ',') {
-		printLine("*ptr = getch();");
+		printLine("*ptr = getchar();");
 	}
 }
 
