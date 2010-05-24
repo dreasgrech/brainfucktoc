@@ -1,4 +1,4 @@
-#define MAX 1000
+#define MAX 10000
 
 extern int statIndex;
 extern int indentLevel;
